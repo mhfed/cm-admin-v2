@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import Sidebar from '@components/common/sidebar'
+import Sidebar from '@/components/layout/sidebar'
 import useIsCollapsed from '@/hooks/use-is-collapsed'
 import SkipToMain from '@components/common/skip-to-main'
 

@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 import { api } from '@/lib/api'
 
 interface User {
@@ -6,6 +7,8 @@ interface User {
   email: string
   role: string
   permissions: string[]
+  name?: string
+  avatar?: string
 }
 
 interface AuthState {
@@ -13,54 +16,75 @@ interface AuthState {
   token: string | null
   isLoading: boolean
   error: string | null
-  
+
   // Actions
   login: (email: string, password: string) => Promise<void>
   logout: () => void
   checkAuth: () => Promise<void>
+  checkPermission: (needles: string[], skipAdmin?: boolean) => boolean
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
-  user: null,
-  token: localStorage.getItem('token'),
-  isLoading: false,
-  error: null,
+export const useAuthStore = create<AuthState>()(
+  persist(
+    (set, get) => ({
+      user: null,
+      token: null,
+      isLoading: false,
+      error: null,
 
-  login: async (email: string, password: string) => {
-    try {
-      set({ isLoading: true, error: null })
-      const { data } = await api.post('/auth/login', { email, password })
-      
-      localStorage.setItem('token', data.token)
-      set({ 
-        user: data.user,
-        token: data.token,
-        isLoading: false 
-      })
-    } catch (error) {
-      set({ 
-        error: 'Login failed. Please check your credentials.',
-        isLoading: false 
-      })
+      login: async (email: string, password: string) => {
+        try {
+          set({ isLoading: true, error: null })
+          const { data } = await api.post('/auth/login', { email, password })
+          
+          set({ 
+            user: data.user,
+            token: data.token,
+            isLoading: false 
+          })
+        } catch (error) {
+          set({ 
+            error: 'Login failed. Please check your credentials.',
+            isLoading: false 
+          })
+          throw error
+        }
+      },
+
+      logout: () => {
+        set({ user: null, token: null })
+      },
+
+      checkAuth: async () => {
+        try {
+          set({ isLoading: true })
+          const { data } = await api.get('/auth/me')
+          set({ user: data, isLoading: false })
+        } catch (error) {
+          set({ 
+            user: null, 
+            token: null,
+            isLoading: false 
+          })
+          throw error
+        }
+      },
+
+      // Migrate từ utils.js checkPermission
+      checkPermission: (needles: string[], skipAdmin = false) => {
+        const { user } = get()
+        if (!user?.permissions) return false
+        
+        if (user.permissions.includes('all') && !skipAdmin) return true
+        
+        return needles.every(permission => 
+          user.permissions.includes(permission)
+        )
+      }
+    }),
+    {
+      name: 'auth-storage', // unique name for localStorage
+      partialize: (state) => ({ token: state.token }) // chỉ lưu token vào localStorage
     }
-  },
-
-  logout: () => {
-    localStorage.removeItem('token')
-    set({ user: null, token: null })
-  },
-
-  checkAuth: async () => {
-    try {
-      set({ isLoading: true })
-      const { data } = await api.get('/auth/me')
-      set({ user: data, isLoading: false })
-    } catch (error) {
-      set({ 
-        user: null, 
-        token: null,
-        isLoading: false 
-      })
-    }
-  },
-})) 
+  )
+) 

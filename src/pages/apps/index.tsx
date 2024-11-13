@@ -16,7 +16,7 @@ import {
 import { Separator } from '@/components/ui/separator'
 import { Search } from '@/components/common/search'
 import ThemeSwitch from '@/components/common/theme-switch'
-import { UserNav } from '@/components/common/user-nav'
+import { UserNav } from '@/components/layout/user-nav'
 import { Button } from '@/components/custom/button'
 import { apps } from './data'
 
