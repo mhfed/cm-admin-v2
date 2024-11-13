@@ -5,12 +5,15 @@ import { Toaster } from '@/components/ui/toaster'
 import { ThemeProvider } from '@/components/common/theme-provider'
 import router from '@/router'
 import '@/index.css'
+import { QueryProvider } from '@/lib/providers/query-provider'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
-      <RouterProvider router={router} />
-      <Toaster />
-    </ThemeProvider>
+    <QueryProvider>
+      <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
+        <RouterProvider router={router} />
+        <Toaster />
+      </ThemeProvider>
+    </QueryProvider>
   </React.StrictMode>
 )
