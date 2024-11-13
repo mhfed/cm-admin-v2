@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
-import Sidebar from './sidebar'
+import Sidebar from '@components/common/sidebar'
 import useIsCollapsed from '@/hooks/use-is-collapsed'
-import SkipToMain from './skip-to-main'
+import SkipToMain from '@components/common/skip-to-main'
 
 export default function AppShell() {
   const [isCollapsed, setIsCollapsed] = useIsCollapsed()

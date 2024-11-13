@@ -41,7 +41,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     lazy: async () => {
-      const AppShell = await import('./components/app-shell')
+      const AppShell = await import('./components/common/app-shell.tsx')
       return { Component: AppShell.default }
     },
     errorElement: <GeneralError />,
@@ -73,13 +73,13 @@ const router = createBrowserRouter([
       {
         path: 'users',
         lazy: async () => ({
-          Component: (await import('@/components/coming-soon')).default,
+          Component: (await import('@/components/common/coming-soon.tsx')).default,
         }),
       },
       {
         path: 'analysis',
         lazy: async () => ({
-          Component: (await import('@/components/coming-soon')).default,
+          Component: (await import('@/components/common/coming-soon.tsx')).default,
         }),
       },
       {

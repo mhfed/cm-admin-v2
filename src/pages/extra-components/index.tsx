@@ -9,9 +9,9 @@ import { PinInput, PinInputField } from '@/components/custom/pin-input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Separator } from '@/components/ui/separator'
 import { Input } from '@/components/ui/input'
-import { Search } from '@/components/search'
-import ThemeSwitch from '@/components/theme-switch'
-import { UserNav } from '@/components/user-nav'
+import { Search } from '@/components/common/search'
+import ThemeSwitch from '@/components/common/theme-switch'
+import { UserNav } from '@/components/common/user-nav'
 
 export default function ExtraComponents() {
   const items = [

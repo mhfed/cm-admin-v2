@@ -9,5 +9,9 @@
 			"path": "../../coolmate/coolmate-admin"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"editor.fontSize": 12,
+		"javascript.preferences.importModuleSpecifier": "non-relative",
+		"typescript.preferences.importModuleSpecifier": "non-relative"
+	}
 }
