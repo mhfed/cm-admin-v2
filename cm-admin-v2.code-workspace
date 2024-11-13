@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "cm-admin-v2",
+			"path": "."
+		},
+		{
+			"name": "coolmate-admin",
+			"path": "../../coolmate/coolmate-admin"
+		}
+	],
+	"settings": {}
+}
