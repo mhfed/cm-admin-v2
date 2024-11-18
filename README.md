@@ -1,66 +1,82 @@
-# Shadcn Admin Dashboard
+# CM Admin Dashboard
 
-Admin Dashboard UI crafted with Shadcn and Vite. Built with responsiveness and accessibility in mind.
+A modern, feature-rich admin dashboard template built with Shadcn UI and Vite. Engineered with a focus on responsive design, accessibility standards, and developer experience.
 
-![alt text](public/images/shadcn-admin.png)
+## ✨ Key Features
 
-I've been creating dashboard UIs at work and for my personal projects. I always wanted to make a reusable collection of dashboard UI for future projects; and here it is now. While I've created a few custom components, some of the code is directly adapted from ShadcnUI examples.
+- 🌓 Seamless light/dark mode switching
+- 📱 Fully responsive design for all devices
+- ♿ WCAG accessibility compliance
+- 🎯 Intuitive sidebar and header navigation
+- 📑 10+ pre-built pages and components
+- 🧩 Extended collection of custom components
+- 🚀 Optimized performance
+- 💻 Developer-friendly codebase
 
-> This is not a starter project (template) though. I'll probably make one in the future.
+## 🛠️ Technology Stack
 
-## Features
+- **Framework:** React 18
+- **UI Components:** [Shadcn UI](https://ui.shadcn.com) (TailwindCSS + RadixUI)
+- **Build System:** [Vite](https://vitejs.dev/)
+- **Navigation:** [React Router v6](https://reactrouter.com/en/main)
+- **Type Safety:** [TypeScript](https://www.typescriptlang.org/)
+- **Code Quality:**
+  - [ESLint](https://eslint.org/) - Linting
+  - [Prettier](https://prettier.io/) - Code formatting
+- **Icons:** [Tabler Icons](https://tabler.io/icons)
 
-- Light/dark mode
-- Responsive
-- Accessible
-- Sidebar and header layouts
-- 10+ pages
-- Extra custom components
+## 🚀 Quick Start
 
-## Tech Stack
-
-**UI:** [ShadcnUI](https://ui.shadcn.com) (TailwindCSS + RadixUI)
-
-**Build Tool:** [Vite](https://vitejs.dev/)
-
-**Routing:** [React Router](https://reactrouter.com/en/main)
-
-**Type Checking:** [TypeScript](https://www.typescriptlang.org/)
-
-**Linting/Formatting:** [Eslint](https://eslint.org/) & [Prettier](https://prettier.io/)
-
-**Icons:** [Tabler Icons](https://tabler.io/icons)
-
-## Run Locally
-
-Clone the project
-
+1. **Clone the repository**
 ```bash
-  git clone https://github.com/satnaing/shadcn-admin.git
+git clone https://github.com/your-username/cm-admin-v2.git
 ```
 
-Go to the project directory
-
+2. **Navigate to project directory**
 ```bash
-  cd shadcn-admin
+cd cm-admin-v2
 ```
 
-Install dependencies
-
+3. **Install dependencies**
 ```bash
-  pnpm install
+bun install
 ```
 
-Start the server
-
+4. **Start development server**
 ```bash
-  pnpm run dev
+bun dev
 ```
 
-## Author
+The application will be available at `http://localhost:5173`
 
-Crafted with 🤍 by [@satnaing](https://github.com/satnaing)
+## 📝 Project Structure
 
-## License
+```
+cm-admin-v2/
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── layouts/        # Page layouts
+│   ├── pages/          # Application pages
+│   ├── lib/           # Utilities and helpers
+│   └── styles/        # Global styles
+├── public/            # Static assets
+└── ...config files
+```
 
-Licensed under the [MIT License](https://choosealicense.com/licenses/mit/)
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<p align="center">Made with ❤️ for the developer community</p>
