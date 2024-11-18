@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { api } from '@/lib/api'
+import httpRequest from '@/services/api'
 
 interface User {
   id: string
@@ -35,7 +35,7 @@ export const useAuthStore = create<AuthState>()(
       login: async (email: string, password: string) => {
         try {
           set({ isLoading: true, error: null })
-          const { data } = await api.post('/auth/login', { email, password })
+          const { data } = await httpRequest.post('/auth/login', { email, password })
           
           set({ 
             user: data.user,
@@ -58,7 +58,7 @@ export const useAuthStore = create<AuthState>()(
       checkAuth: async () => {
         try {
           set({ isLoading: true })
-          const { data } = await api.get('/auth/me')
+          const { data } = await httpRequest.get('/auth/me')
           set({ user: data, isLoading: false })
         } catch (error) {
           set({ 
