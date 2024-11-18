@@ -3,15 +3,15 @@ import { Button } from '@/components/custom/button'
 export default function MaintenanceError() {
   return (
     <div className='h-svh'>
-      <div className='m-auto flex h-full w-full flex-col items-center justify-center gap-2'>
+      <div className='flex flex-col items-center justify-center w-full h-full gap-2 m-auto'>
         <h1 className='text-[7rem] font-bold leading-tight'>503</h1>
-        <span className='font-medium'>Website is under maintenance!</span>
+        <span className='font-medium'>Trang web đang được bảo trì!</span>
         <p className='text-center text-muted-foreground'>
-          The site is not available at the moment. <br />
-          We'll be back online shortly.
+          Trang web hiện không khả dụng. <br />
+          Chúng tôi sẽ sớm hoạt động trở lại.
         </p>
-        <div className='mt-6 flex gap-4'>
-          <Button variant='outline'>Learn more</Button>
+        <div className='flex gap-4 mt-6'>
+          <Button variant='outline'>Tìm hiểu thêm</Button>
         </div>
       </div>
     </div>

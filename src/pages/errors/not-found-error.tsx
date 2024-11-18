@@ -5,18 +5,18 @@ export default function NotFoundError() {
   const navigate = useNavigate()
   return (
     <div className='h-svh'>
-      <div className='m-auto flex h-full w-full flex-col items-center justify-center gap-2'>
+      <div className='flex flex-col items-center justify-center w-full h-full gap-2 m-auto'>
         <h1 className='text-[7rem] font-bold leading-tight'>404</h1>
-        <span className='font-medium'>Oops! Page Not Found!</span>
+        <span className='font-medium'>Rất tiếc! Không tìm thấy trang!</span>
         <p className='text-center text-muted-foreground'>
-          It seems like the page you're looking for <br />
-          does not exist or might have been removed.
+          Có vẻ như trang bạn đang tìm kiếm <br />
+          không tồn tại hoặc đã bị xóa.
         </p>
-        <div className='mt-6 flex gap-4'>
+        <div className='flex gap-4 mt-6'>
           <Button variant='outline' onClick={() => navigate(-1)}>
-            Go Back
+            Quay Lại
           </Button>
-          <Button onClick={() => navigate('/')}>Back to Home</Button>
+          <Button onClick={() => navigate('/')}>Về Trang Chủ</Button>
         </div>
       </div>
     </div>

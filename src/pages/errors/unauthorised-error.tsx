@@ -5,21 +5,20 @@ export default function UnauthorisedError() {
   const navigate = useNavigate()
   return (
     <div className='h-svh'>
-      <div className='m-auto flex h-full w-full flex-col items-center justify-center gap-2'>
+      <div className='flex flex-col items-center justify-center w-full h-full gap-2 m-auto'>
         <h1 className='text-[7rem] font-bold leading-tight'>401</h1>
         <span className='font-medium'>
-          Oops! You don't have permission to access this page.
+          Rất tiếc! Bạn không có quyền truy cập trang này.
         </span>
         <p className='text-center text-muted-foreground'>
-          It looks like you tried to access a resource that requires proper
-          authentication. <br />
-          Please log in with the appropriate credentials.
+          Có vẻ như bạn đang cố truy cập vào tài nguyên yêu cầu xác thực. <br />
+          Vui lòng đăng nhập với thông tin đăng nhập phù hợp.
         </p>
-        <div className='mt-6 flex gap-4'>
+        <div className='flex gap-4 mt-6'>
           <Button variant='outline' onClick={() => navigate(-1)}>
-            Go Back
+            Quay Lại
           </Button>
-          <Button onClick={() => navigate('/')}>Back to Home</Button>
+          <Button onClick={() => navigate('/')}>Về Trang Chủ</Button>
         </div>
       </div>
     </div>

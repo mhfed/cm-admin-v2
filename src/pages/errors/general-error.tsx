@@ -13,20 +13,20 @@ export default function GeneralError({
   const navigate = useNavigate()
   return (
     <div className={cn('h-svh w-full', className)}>
-      <div className='m-auto flex h-full w-full flex-col items-center justify-center gap-2'>
+      <div className='flex flex-col items-center justify-center w-full h-full gap-2 m-auto'>
         {!minimal && (
           <h1 className='text-[7rem] font-bold leading-tight'>500</h1>
         )}
-        <span className='font-medium'>Oops! Something went wrong {`:')`}</span>
+        <span className='font-medium'>Rất tiếc! Đã có lỗi xảy ra {`:')`}</span>
         <p className='text-center text-muted-foreground'>
-          We apologize for the inconvenience. <br /> Please try again later.
+          Chúng tôi xin lỗi vì sự bất tiện này. <br /> Vui lòng thử lại sau.
         </p>
         {!minimal && (
-          <div className='mt-6 flex gap-4'>
+          <div className='flex gap-4 mt-6'>
             <Button variant='outline' onClick={() => navigate(-1)}>
-              Go Back
+              Quay Lại
             </Button>
-            <Button onClick={() => navigate('/')}>Back to Home</Button>
+            <Button onClick={() => navigate('/')}>Về Trang Chủ</Button>
           </div>
         )}
       </div>
