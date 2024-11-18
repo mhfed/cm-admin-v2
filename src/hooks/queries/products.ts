@@ -1,29 +1,12 @@
+import { ProductService } from '@/services/product-service'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { api } from '@/lib/api'
-
-interface Product {
-  _id: string
-  title: string
-  sku: string
-  price: number
-  // ... other fields
-}
-
-interface ProductFilters {
-  keyword?: string
-  collection?: string
-  status?: string
-}
+import type { Product, ProductFilters } from '@/types/product'
 
 // Get Products
 export function useProducts(filters?: ProductFilters) {
   return useQuery({
     queryKey: ['products', filters],
-    queryFn: async () => {
-      const params = new URLSearchParams(filters as Record<string, string>)
-      const { data } = await api.get(`/products?${params}`)
-      return data
-    }
+    queryFn: () => ProductService.getProducts(filters)
   })
 }
 
@@ -31,10 +14,7 @@ export function useProducts(filters?: ProductFilters) {
 export function useProduct(id: string) {
   return useQuery({
     queryKey: ['products', id],
-    queryFn: async () => {
-      const { data } = await api.get(`/products/${id}`)
-      return data
-    },
+    queryFn: () => ProductService.getProduct(id),
     enabled: !!id
   })
 }
@@ -44,10 +24,7 @@ export function useCreateProduct() {
   const queryClient = useQueryClient()
   
   return useMutation({
-    mutationFn: async (product: Partial<Product>) => {
-      const { data } = await api.post('/products', product)
-      return data
-    },
+    mutationFn: ProductService.createProduct,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['products'] })
     }
@@ -59,10 +36,8 @@ export function useUpdateProduct() {
   const queryClient = useQueryClient()
   
   return useMutation({
-    mutationFn: async ({ id, data }: { id: string; data: Partial<Product> }) => {
-      const response = await api.put(`/products/${id}`, data)
-      return response.data
-    },
+    mutationFn: ({ id, data }: { id: string; data: Partial<Product> }) => 
+      ProductService.updateProduct(id, data),
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: ['products'] })
       queryClient.invalidateQueries({ queryKey: ['products', variables.id] })
