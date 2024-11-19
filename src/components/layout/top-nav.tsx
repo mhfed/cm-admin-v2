@@ -1,4 +1,4 @@
-import { cn } from '@utils'
+import { cn } from '@utils/cn'
 import { Link } from 'react-router-dom'
 import {
   DropdownMenu,

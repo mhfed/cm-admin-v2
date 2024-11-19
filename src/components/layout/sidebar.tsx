@@ -3,7 +3,7 @@ import { IconChevronsLeft, IconMenu2, IconX } from '@tabler/icons-react'
 import { Layout } from '../custom/layout'
 import { Button } from '../custom/button'
 import Nav from './nav'
-import { cn } from '@utils'
+import { cn } from '@utils/cn'
 import { sidelinks } from '@/data/sidelinks'
 
 interface SidebarProps extends React.HTMLAttributes<HTMLElement> {

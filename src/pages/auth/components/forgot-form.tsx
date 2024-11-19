@@ -1,5 +1,5 @@
 import { HTMLAttributes, useState } from 'react'
-import { cn } from '@utils'
+import { cn } from '@utils/cn'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'

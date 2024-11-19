@@ -14,7 +14,7 @@ import {
   IconSend,
   IconVideo,
 } from '@tabler/icons-react'
-import { cn } from '@utils'
+import { cn } from '@utils/cn'
 import { Separator } from '@components/ui/separator'
 import { Avatar, AvatarFallback, AvatarImage } from '@components/ui/avatar'
 import { Layout } from '@components/custom/layout'

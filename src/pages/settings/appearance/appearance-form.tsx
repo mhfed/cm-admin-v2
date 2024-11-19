@@ -3,7 +3,7 @@ import { ChevronDownIcon } from '@radix-ui/react-icons'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { cn } from '@utils'
+import { cn } from '@utils/cn'
 import { Button, buttonVariants } from '@components/custom/button'
 import {
   Form,
