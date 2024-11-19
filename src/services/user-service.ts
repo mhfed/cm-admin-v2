@@ -1,5 +1,5 @@
 import httpRequest from '@services/api'
-import { ENDPOINTS } from '@/constants/endpoints'
+import { ENDPOINTS } from '@constants/endpoints'
 import type { 
   User, 
   UserFilters, 

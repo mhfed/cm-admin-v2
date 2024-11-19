@@ -1,6 +1,6 @@
 // product-service.ts
 import httpRequest from '@services/api'
-import { ENDPOINTS } from '@/constants/endpoints'
+import { ENDPOINTS } from '@constants/endpoints'
 import type { ProductFilters, Product } from '@/types/product'
 
 export const ProductService = {
