@@ -1,17 +1,40 @@
-# CM Admin Dashboard
+# CM Admin V2
 
-A modern, feature-rich admin dashboard template built with Shadcn UI and Vite. Engineered with a focus on responsive design, accessibility standards, and developer experience.
+Modern admin dashboard built with React, TypeScript, and Tailwind CSS.
 
-## ✨ Key Features
+## Features
 
-- 🌓 Seamless light/dark mode switching
-- 📱 Fully responsive design for all devices
-- ♿ WCAG accessibility compliance
-- 🎯 Intuitive sidebar and header navigation
-- 📑 10+ pre-built pages and components
-- 🧩 Extended collection of custom components
-- 🚀 Optimized performance
-- 💻 Developer-friendly codebase
+- 🚀 Built with React 18, TypeScript, and Vite
+- 🎨 Styled with Tailwind CSS and Shadcn UI
+- 📊 Data fetching with React Query
+- 🔒 Authentication and authorization
+- 📱 Responsive design
+- 🌙 Dark mode support
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm (recommended) or npm
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/cm-admin-v2.git
+```
+
+2. Install dependencies:
+```bash
+cd cm-admin-v2
+pnpm install
+```
+
+3. Create `.env` file:
+```env
+VITE_API_URL=your
+```
 
 ## 🛠️ Technology Stack
 
@@ -54,24 +77,22 @@ The application will be available at `http://localhost:5173`
 ```
 cm-admin-v2/
 ├── src/
-│   ├── components/     # Reusable UI components
-│   ├── layouts/        # Page layouts
-│   ├── pages/          # Application pages
-│   ├── lib/           # Utilities and helpers
-│   └── styles/        # Global styles
-├── public/            # Static assets
-└── ...config files
+│ ├── components/ # Reusable components
+│ ├── hooks/ # Custom hooks
+│ ├── layouts/ # Layout components
+│ ├── pages/ # Page components
+│ ├── services/ # API services
+│ ├── stores/ # Global state management
+│ ├── styles/ # Global styles
+│ ├── types/ # TypeScript types
+│ └── utils/ # Utility functions
+├── public/ # Static files
+└── package.json
 ```
 
-## 🤝 Contributing
+## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Please read our [Contributing Guide](./CONTRIBUTING.md) before submitting a Pull Request.
 
 ## 📄 License
 
