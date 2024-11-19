@@ -95,7 +95,7 @@ function NavLink({
       onClick={closeNav}
       className={cn(
         buttonVariants({
-          variant: checkActiveNav(href) ? 'primary' : 'ghost',
+          variant: checkActiveNav(href) ? 'default' : 'ghost',
           size: 'sm',
         }),
         'h-12 justify-start text-wrap rounded-none px-6',
