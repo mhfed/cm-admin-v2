@@ -1,4 +1,4 @@
-import { useSocket } from '@/hooks/useSocket';
+import { useSocket } from '@hooks/useSocket';
 import { joinRoom, leaveRoom } from '@/services/socket';
 import { useEffect, useState } from 'react';
 

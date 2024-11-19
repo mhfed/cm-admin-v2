@@ -1,4 +1,4 @@
-import { useProducts, useCreateProduct } from '@/hooks/queries/products'
+import { useProducts, useCreateProduct } from '@hooks/queries/products'
 import { useUIStore } from '@stores/ui'
 
 export function ProductsPage() {
