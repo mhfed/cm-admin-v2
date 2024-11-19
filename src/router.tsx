@@ -55,19 +55,19 @@ const router = createBrowserRouter([
       {
         path: 'tasks',
         lazy: async () => ({
-          Component: (await import('@/pages/tasks')).default,
+          Component: (await import('@pages/tasks')).default,
         }),
       },
       {
         path: 'chats',
         lazy: async () => ({
-          Component: (await import('@/pages/chats')).default,
+          Component: (await import('@pages/chats')).default,
         }),
       },
       {
         path: 'apps',
         lazy: async () => ({
-          Component: (await import('@/pages/apps')).default,
+          Component: (await import('@pages/apps')).default,
         }),
       },
       {
@@ -85,7 +85,7 @@ const router = createBrowserRouter([
       {
         path: 'extra-components',
         lazy: async () => ({
-          Component: (await import('@/pages/extra-components')).default,
+          Component: (await import('@pages/extra-components')).default,
         }),
       },
       {

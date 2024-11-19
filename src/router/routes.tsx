@@ -2,9 +2,9 @@ import { lazy } from 'react'
 import { RouteObject } from 'react-router-dom'
 
 // Lazy load components
-const Dashboard = lazy(() => import('@/pages/dashboard'))
-const Products = lazy(() => import('@/pages/products'))
-const Orders = lazy(() => import('@/pages/orders'))
+const Dashboard = lazy(() => import('@pages/dashboard'))
+const Products = lazy(() => import('@pages/products'))
+const Orders = lazy(() => import('@pages/orders'))
 // ... other imports
 
 interface ProtectedRouteConfig extends RouteObject {
