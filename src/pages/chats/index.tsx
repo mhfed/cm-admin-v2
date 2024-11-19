@@ -24,7 +24,7 @@ import { UserNav } from '@components/layout/user-nav'
 import { Button } from '@components/custom/button'
 
 // Fake Data
-import { conversations } from '@/data/conversations.json'
+import { conversations } from '@data/conversations.json'
 
 type ChatUser = (typeof conversations)[number]
 type Convo = ChatUser['messages'][number]

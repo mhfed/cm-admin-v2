@@ -21,7 +21,7 @@ import {
 } from '../ui/tooltip'
 import { cn } from '@utils/cn'
 import useCheckActiveNav from '@hooks/common/use-check-active-nav'
-import { SideLink } from '@/data/sidelinks'
+import { SideLink } from '@data/sidelinks'
 import { Button, buttonVariants } from '@components/custom/button'
 
 interface NavProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -201,7 +201,7 @@ function NavLinkIconDropdown({ title, icon, label, sub }: NavLinkProps) {
             <Button
               variant={isChildActive ? 'secondary' : 'ghost'}
               size='icon'
-              className='h-12 w-12'
+              className='w-12 h-12'
             >
               {icon}
             </Button>
