@@ -18,6 +18,28 @@ export function useCollectionTree() {
   })
 }
 
+// Get Single Collection
+export function useCollection(id: string) {
+  return useQuery({
+    queryKey: ['collections', id],
+    queryFn: () => CollectionService.getCollection(id),
+    enabled: !!id
+  })
+}
+
+// Create Collection
+export function useCreateCollection() {
+  const queryClient = useQueryClient()
+  
+  return useMutation({
+    mutationFn: (collection: Partial<Collection>) => 
+      CollectionService.createCollection(collection),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['collections'] })
+    }
+  })
+}
+
 // Update Collection
 export function useUpdateCollection() {
   const queryClient = useQueryClient()
@@ -25,8 +47,21 @@ export function useUpdateCollection() {
   return useMutation({
     mutationFn: ({ id, data }: { id: string; data: Partial<Collection> }) => 
       CollectionService.updateCollection(id, data),
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({ queryKey: ['collections'] })
+      queryClient.invalidateQueries({ queryKey: ['collections', variables.id] })
+    }
+  }) 
+}
+
+// Delete Collection
+export function useDeleteCollection() {
+  const queryClient = useQueryClient()
+  
+  return useMutation({
+    mutationFn: (id: string) => CollectionService.deleteCollection(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['collections'] })
     }
-  }) 
+  })
 }
