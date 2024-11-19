@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { buttonVariants } from '@/components/custom/button'
+import { buttonVariants } from '@components/custom/button'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from '@components/ui/select'
 import { cn } from '@/lib/utils'
 
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {

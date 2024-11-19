@@ -73,13 +73,13 @@ const router = createBrowserRouter([
       {
         path: 'users',
         lazy: async () => ({
-          Component: (await import('@/components/common/coming-soon.tsx')).default,
+          Component: (await import('@components/common/coming-soon.tsx')).default,
         }),
       },
       {
         path: 'analysis',
         lazy: async () => ({
-          Component: (await import('@/components/common/coming-soon.tsx')).default,
+          Component: (await import('@components/common/coming-soon.tsx')).default,
         }),
       },
       {

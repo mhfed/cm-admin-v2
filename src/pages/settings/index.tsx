@@ -7,11 +7,11 @@ import {
   IconTool,
   IconUser,
 } from '@tabler/icons-react'
-import { Layout } from '@/components/custom/layout'
-import { Search } from '@/components/common/search'
-import { Separator } from '@/components/ui/separator'
-import ThemeSwitch from '@/components/common/theme-switch'
-import { UserNav } from '@/components/layout/user-nav'
+import { Layout } from '@components/custom/layout'
+import { Search } from '@components/common/search'
+import { Separator } from '@components/ui/separator'
+import ThemeSwitch from '@components/common/theme-switch'
+import { UserNav } from '@components/layout/user-nav'
 import SidebarNav from './components/sidebar-nav'
 
 export default function Settings() {

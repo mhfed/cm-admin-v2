@@ -11,10 +11,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/custom/button'
-import { PasswordInput } from '@/components/custom/password-input'
+} from '@components/ui/form'
+import { Input } from '@components/ui/input'
+import { Button } from '@components/custom/button'
+import { PasswordInput } from '@components/custom/password-input'
 import { cn } from '@/lib/utils'
 
 interface UserAuthFormProps extends HTMLAttributes<HTMLDivElement> {}

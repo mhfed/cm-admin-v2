@@ -1,4 +1,4 @@
-import { Card } from '@/components/ui/card'
+import { Card } from '@components/ui/card'
 import { ForgotForm } from './components/forgot-form'
 import { Link } from 'react-router-dom'
 

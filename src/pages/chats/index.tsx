@@ -15,13 +15,13 @@ import {
   IconVideo,
 } from '@tabler/icons-react'
 import { cn } from '@/lib/utils'
-import { Separator } from '@/components/ui/separator'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Layout } from '@/components/custom/layout'
-import { Search } from '@/components/common/search'
-import ThemeSwitch from '@/components/common/theme-switch'
-import { UserNav } from '@/components/layout/user-nav'
-import { Button } from '@/components/custom/button'
+import { Separator } from '@components/ui/separator'
+import { Avatar, AvatarFallback, AvatarImage } from '@components/ui/avatar'
+import { Layout } from '@components/custom/layout'
+import { Search } from '@components/common/search'
+import ThemeSwitch from '@components/common/theme-switch'
+import { UserNav } from '@components/layout/user-nav'
+import { Button } from '@components/custom/button'
 
 // Fake Data
 import { conversations } from '@/data/conversations.json'

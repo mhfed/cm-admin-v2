@@ -3,17 +3,17 @@ import { cn } from '@/lib/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { Button } from '@/components/custom/button'
+import { Button } from '@components/custom/button'
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { PinInput, PinInputField } from '@/components/custom/pin-input'
-import { Separator } from '@/components/ui/separator'
+} from '@components/ui/form'
+import { Input } from '@components/ui/input'
+import { PinInput, PinInputField } from '@components/custom/pin-input'
+import { Separator } from '@components/ui/separator'
 
 interface OtpFormProps extends HTMLAttributes<HTMLDivElement> {}
 

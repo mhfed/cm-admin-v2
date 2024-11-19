@@ -1,6 +1,6 @@
 // auth-service.ts
 import httpRequest from '@/services/api'
-import { ENDPOINTS } from '@/constants/endpoints'
+import { ENDPOINTS } from '@constants/endpoints'
 import { AuthResponse, ChangePasswordData, LoginResponse, MeResponse, RegisterResponse, ResetPasswordData } from '@/types/auth'
 
 type LoginCredentials = {

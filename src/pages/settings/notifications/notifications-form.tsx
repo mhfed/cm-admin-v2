@@ -2,8 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { Button } from '@/components/custom/button'
-import { Checkbox } from '@/components/ui/checkbox'
+import { Button } from '@components/custom/button'
+import { Checkbox } from '@components/ui/checkbox'
 import {
   Form,
   FormControl,
@@ -12,10 +12,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Switch } from '@/components/ui/switch'
-import { toast } from '@/components/ui/use-toast'
+} from '@components/ui/form'
+import { RadioGroup, RadioGroupItem } from '@components/ui/radio-group'
+import { Switch } from '@components/ui/switch'
+import { toast } from '@components/ui/use-toast'
 import { Link } from 'react-router-dom'
 
 const notificationsFormSchema = z.object({
