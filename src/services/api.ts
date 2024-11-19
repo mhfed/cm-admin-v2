@@ -1,7 +1,7 @@
 
 import axios, { AxiosRequestConfig } from 'axios';
 import toast from 'react-hot-toast';
-import { clear, load } from '@/lib/utils';
+import { clear, load } from '@utils';
 
 // Create an Axios instance
 const requestConfig: AxiosRequestConfig = {

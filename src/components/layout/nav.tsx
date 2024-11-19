@@ -19,7 +19,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '../ui/tooltip'
-import { cn } from '@/lib/utils'
+import { cn } from '@utils'
 import useCheckActiveNav from '@/hooks/common/use-check-active-nav'
 import { SideLink } from '@/data/sidelinks'
 import { Button, buttonVariants } from '@components/custom/button'
