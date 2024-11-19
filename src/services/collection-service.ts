@@ -1,4 +1,4 @@
-import httpRequest from '@/services/api'
+import httpRequest from '@services/api'
 import { ENDPOINTS } from '@/constants/endpoints'
 import type { Collection } from '@/types/collection'
 

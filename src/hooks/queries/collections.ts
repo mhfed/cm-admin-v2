@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { CollectionService } from '@/services/collection-service'
+import { CollectionService } from '@services/collection-service'
 import type { Collection } from '@/types/collection'
 
 // Get Collections

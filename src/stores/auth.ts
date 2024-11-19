@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import httpRequest from '@/services/api'
+import httpRequest from '@services/api'
 
 interface User {
   id: string

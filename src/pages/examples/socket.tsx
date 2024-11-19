@@ -1,5 +1,5 @@
 import { useSocket } from '@hooks/useSocket';
-import { joinRoom, leaveRoom } from '@/services/socket';
+import { joinRoom, leaveRoom } from '@services/socket';
 import { useEffect, useState } from 'react';
 
 const ExampleSocket = () => {

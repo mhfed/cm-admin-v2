@@ -1,4 +1,4 @@
-import { ProductService } from '@/services/product-service'
+import { ProductService } from '@services/product-service'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import type { Product, ProductFilters } from '@/types/product'
 
