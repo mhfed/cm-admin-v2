@@ -1,5 +1,5 @@
 import { useProducts, useCreateProduct } from '@/hooks/queries/products'
-import { useUIStore } from '@/stores/ui'
+import { useUIStore } from '@stores/ui'
 
 export function ProductsPage() {
   const { showToast } = useUIStore()

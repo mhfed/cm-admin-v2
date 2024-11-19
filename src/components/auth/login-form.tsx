@@ -1,6 +1,6 @@
 // Example of a login form
-import { useAuthStore } from '@/stores/auth'
-import { useUIStore } from '@/stores/ui'
+import { useAuthStore } from '@stores/auth'
+import { useUIStore } from '@stores/ui'
 
 export function LoginForm() {
   const { login, isLoading } = useAuthStore()

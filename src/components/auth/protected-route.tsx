@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useLocation, useMatches } from 'react-router-dom'
-import { useAuthStore } from '@/stores/auth'
+import { useAuthStore } from '@stores/auth'
 import type { ProtectedRouteConfig } from '@/router/routes'
 
 export function ProtectedRoute() {

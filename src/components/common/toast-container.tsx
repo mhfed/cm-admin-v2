@@ -1,5 +1,5 @@
 // chưa biết dùng toast nào
-import { useUIStore } from '@/stores/ui'
+import { useUIStore } from '@stores/ui'
 
 export function ToastContainer() {
   const { toasts, removeToast } = useUIStore()
