@@ -99,7 +99,7 @@ function NavLink({
           size: 'sm',
         }),
         'h-12 justify-start text-wrap rounded-none px-6',
-        subLink && 'h-10 w-full border-l border-l-slate-500 px-2'
+        subLink && 'h-10 w-full pl-8'
       )}
       aria-current={checkActiveNav(href) ? 'page' : undefined}
     >
@@ -117,16 +117,17 @@ function NavLink({
 function NavLinkDropdown({ title, icon, label, sub, closeNav }: NavLinkProps) {
   const { checkActiveNav } = useCheckActiveNav()
 
-  /* Open collapsible by default
-   * if one of child element is active */
-  const isChildActive = !!sub?.find((s) => checkActiveNav(s.href))
+  const isChildActive = !!sub?.find((s) => checkActiveNav(s.href) || s.sub?.some(ss => checkActiveNav(ss.href)))
 
   return (
     <Collapsible defaultOpen={isChildActive}>
       <CollapsibleTrigger
         className={cn(
-          buttonVariants({ variant: 'ghost', size: 'sm' }),
-          'group h-12 w-full justify-start rounded-none px-6'
+          buttonVariants({ 
+            variant: isChildActive ? 'secondary' : 'ghost', 
+            size: 'sm', 
+          }),
+          `group h-12 w-full justify-start rounded-none px-6 ${isChildActive ? 'bg-primary/20' : ''}`
         )}
       >
         <div className='mr-2'>{icon}</div>
@@ -147,8 +148,12 @@ function NavLinkDropdown({ title, icon, label, sub, closeNav }: NavLinkProps) {
       <CollapsibleContent className='collapsibleDropdown' asChild>
         <ul>
           {sub!.map((sublink) => (
-            <li key={sublink.title} className='my-1 ml-8'>
-              <NavLink {...sublink} subLink closeNav={closeNav} />
+            <li key={sublink.title} className='my-1'>
+              {sublink.sub ? (
+                <NavLinkDropdown {...sublink} subLink closeNav={closeNav} />
+              ) : (
+                <NavLink {...sublink} subLink closeNav={closeNav} />
+              )}
             </li>
           ))}
         </ul>
@@ -189,9 +194,7 @@ function NavLinkIcon({ title, icon, label, href }: NavLinkProps) {
 function NavLinkIconDropdown({ title, icon, label, sub }: NavLinkProps) {
   const { checkActiveNav } = useCheckActiveNav()
 
-  /* Open collapsible by default
-   * if one of child element is active */
-  const isChildActive = !!sub?.find((s) => checkActiveNav(s.href))
+  const isChildActive = !!sub?.find((s) => checkActiveNav(s.href) || s.sub?.some(ss => checkActiveNav(ss.href)))
 
   return (
     <DropdownMenu>
@@ -223,17 +226,55 @@ function NavLinkIconDropdown({ title, icon, label, sub }: NavLinkProps) {
           {title} {label ? `(${label})` : ''}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {sub!.map(({ title, icon, label, href }) => (
-          <DropdownMenuItem key={`${title}-${href}`} asChild>
-            <Link
-              to={href}
-              className={`${checkActiveNav(href) ? 'bg-secondary' : ''}`}
-            >
-              {icon} <span className='ml-2 max-w-52 text-wrap'>{title}</span>
-              {label && <span className='ml-auto text-xs'>{label}</span>}
-            </Link>
-          </DropdownMenuItem>
-        ))}
+        {sub!.map(({ title, icon, label, href, sub: subSub }) => {
+          const isSubActive = checkActiveNav(href) || subSub?.some(ss => checkActiveNav(ss.href))
+          return (
+            subSub ? (
+              <DropdownMenu key={`${title}-${href}`}>
+                <DropdownMenuTrigger className={cn(
+                  'w-full px-2 py-1.5 hover:bg-accent flex items-center',
+                  isSubActive && 'bg-secondary'
+                )}>
+                  {icon} <span className='ml-2 max-w-52 text-wrap'>{title}</span>
+                  {label && <span className='ml-auto text-xs'>{label}</span>}
+                  <IconChevronDown size={18} className='ml-auto -rotate-90' />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent side='right' align='start' sideOffset={-5}>
+                  {subSub.map(({ title, icon, label, href }) => {
+                    const isActive = checkActiveNav(href)
+                    return (
+                      <DropdownMenuItem key={`${title}-${href}`} asChild>
+                        <Link
+                          to={href}
+                          className={cn(
+                            'flex items-center',
+                            isActive && 'bg-secondary'
+                          )}
+                        >
+                          {icon} <span className='ml-2 max-w-52 text-wrap'>{title}</span>
+                          {label && <span className='ml-auto text-xs'>{label}</span>}
+                        </Link>
+                      </DropdownMenuItem>
+                    )
+                  })}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <DropdownMenuItem key={`${title}-${href}`} asChild>
+                <Link
+                  to={href}
+                  className={cn(
+                    'flex items-center',
+                    checkActiveNav(href) && 'bg-secondary'
+                  )}
+                >
+                  {icon} <span className='ml-2 max-w-52 text-wrap'>{title}</span>
+                  {label && <span className='ml-auto text-xs'>{label}</span>}
+                </Link>
+              </DropdownMenuItem>
+            )
+          )
+        })}
       </DropdownMenuContent>
     </DropdownMenu>
   )

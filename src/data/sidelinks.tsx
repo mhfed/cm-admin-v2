@@ -1,37 +1,27 @@
 import {
   IconApps,
-  IconBarrierBlock,
-  IconBoxSeam,
+  IconChartBar,
   IconChartHistogram,
   IconChecklist,
   IconComponents,
-  IconError404,
+  IconDots,
+  IconCircleDotFilled,
   IconExclamationCircle,
-  IconHexagonNumber1,
-  IconHexagonNumber2,
-  IconHexagonNumber3,
-  IconHexagonNumber4,
-  IconHexagonNumber5,
+  IconFileText,
+  IconGift,
+  IconHome,
   IconLayoutDashboard,
+  IconLink,
   IconMessages,
   IconRouteAltLeft,
-  IconServerOff,
   IconSettings,
-  IconTruck,
-  IconUserShield,
-  IconUsers,
-  IconLock,
-  IconHome,
+  IconShoppingBag,
   IconShoppingCart,
-  IconGift,
-  IconFileText,
-  IconUser,
-  IconChartBar,
   IconStar,
   IconTool,
-  IconLink,
-  IconShoppingBag,
-  // IconEye,
+  IconUser,
+  IconUserShield,
+  IconUsers
 } from '@tabler/icons-react'
 
 export interface SideLink {
@@ -58,12 +48,12 @@ export const sidelinks: SideLink[] = [
       {
         title: 'Tất cả đơn hàng',
         href: '/orders',
-        icon: <IconHexagonNumber1 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Đơn đặt hàng được phân công',
         href: '/orders/assigned',
-        icon: <IconHexagonNumber2 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       }
     ]
   },
@@ -76,37 +66,37 @@ export const sidelinks: SideLink[] = [
       {
         title: 'Tất cả sản phẩm',
         href: '/products',
-        icon: <IconHexagonNumber1 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Danh mục',
         href: '/categories',
-        icon: <IconHexagonNumber2 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Nhóm sản phẩm',
         href: '/collections',
-        icon: <IconHexagonNumber3 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Phân loại sản phẩm',
         href: '/products/category',
-        icon: <IconHexagonNumber4 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
         sub: [
           {
             title: 'Product Category',
             href: '/products/category',
-            icon: <IconHexagonNumber1 size={18} />,
+            icon: <IconDots size={18} />,
           },
           {
             title: 'Products',
             href: '/products/list',
-            icon: <IconHexagonNumber2 size={18} />,
+            icon: <IconDots size={18} />,
           },
           {
             title: 'Product Tags',
             href: '/products/tags',
-            icon: <IconHexagonNumber3 size={18} />,
+            icon: <IconDots size={18} />,
           }
         ]
       }
@@ -133,17 +123,17 @@ export const sidelinks: SideLink[] = [
       {
         title: 'Tất cả bài viết',
         href: '/articles',
-        icon: <IconHexagonNumber1 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Danh mục bài viết',
         href: '/blogs',
-        icon: <IconHexagonNumber2 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Quản lý SEO',
         href: '/articles/seo',
-        icon: <IconHexagonNumber3 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       }
     ]
   },
@@ -156,17 +146,17 @@ export const sidelinks: SideLink[] = [
       {
         title: 'Tất cả khách hàng',
         href: '/customers',
-        icon: <IconHexagonNumber1 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Tích điểm Coolclub',
         href: '/customers/tich-diem',
-        icon: <IconHexagonNumber2 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Loại bỏ thông báo',
         href: '/customers/opt-out',
-        icon: <IconHexagonNumber3 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       }
     ]
   },
@@ -179,17 +169,17 @@ export const sidelinks: SideLink[] = [
       {
         title: 'Báo cáo tổng quan',
         href: '/reports',
-        icon: <IconHexagonNumber1 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Top nhân viên',
         href: '/reports/top-staffs',
-        icon: <IconHexagonNumber2 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Sản phẩm theo đơn',
         href: '/reports/products',
-        icon: <IconHexagonNumber3 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       }
     ]
   },
@@ -208,12 +198,12 @@ export const sidelinks: SideLink[] = [
       {
         title: 'SEO Redirects',
         href: '/seo-redirect',
-        icon: <IconHexagonNumber1 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Quản lý SEO',
         href: '/seo',
-        icon: <IconHexagonNumber2 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       }
     ]
   },
@@ -226,32 +216,32 @@ export const sidelinks: SideLink[] = [
       {
         title: 'Đối soát Aff',
         href: '/tool/audit-aff',
-        icon: <IconHexagonNumber1 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'VietFul CXP',
         href: '/tool/vietful-cxp',
-        icon: <IconHexagonNumber2 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Mapping',
         href: '/tool/mapping',
-        icon: <IconHexagonNumber3 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
         sub: [
           {
             title: 'Mapping Sàn',
             href: '/tool/mapping/san',
-            icon: <IconHexagonNumber1 size={18} />,
+            icon: <IconDots size={18} />,
           },
           {
             title: 'Import file sản phẩm',
             href: '/tool/mapping/import-product',
-            icon: <IconHexagonNumber2 size={18} />,
+            icon: <IconDots size={18} />,
           },
           {
             title: 'Swap Barcode',
             href: '/tool/mapping/swap-barcode',
-            icon: <IconHexagonNumber3 size={18} />,
+            icon: <IconDots size={18} />,
           }
         ]
       }
@@ -266,17 +256,17 @@ export const sidelinks: SideLink[] = [
       {
         title: 'Tác vụ ngầm',
         href: '/background-job',
-        icon: <IconHexagonNumber1 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Cài đặt chung',
         href: '/settings/general',
-        icon: <IconHexagonNumber2 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Nhân viên',
         href: '/staffs',
-        icon: <IconHexagonNumber3 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       }
     ]
   },
@@ -315,31 +305,31 @@ export const sidelinks: SideLink[] = [
         title: 'Đăng nhập (email + mật khẩu)',
         label: '',
         href: '/sign-in',
-        icon: <IconHexagonNumber1 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Đăng nhập (Box)',
         label: '',
         href: '/sign-in-2',
-        icon: <IconHexagonNumber2 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Đăng ký',
         label: '',
         href: '/sign-up',
-        icon: <IconHexagonNumber3 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Quên mật khẩu',
         label: '',
         href: '/forgot-password',
-        icon: <IconHexagonNumber4 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Mã OTP',
         label: '',
         href: '/otp',
-        icon: <IconHexagonNumber5 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
     ],
   },
@@ -359,13 +349,13 @@ export const sidelinks: SideLink[] = [
         title: 'Xe tải',
         label: '9',
         href: '/trucks',
-        icon: <IconTruck size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Hàng hóa',
         label: '',
         href: '/cargos',
-        icon: <IconBoxSeam size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
     ],
   },
@@ -391,25 +381,25 @@ export const sidelinks: SideLink[] = [
         title: 'Không tìm thấy',
         label: '',
         href: '/404',
-        icon: <IconError404 size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Lỗi máy chủ',
         label: '',
         href: '/500',
-        icon: <IconServerOff size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Đang bảo trì',
         label: '',
         href: '/503',
-        icon: <IconBarrierBlock size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
       {
         title: 'Không được phép',
         label: '',
         href: '/401',
-        icon: <IconLock size={18} />,
+        icon: <IconCircleDotFilled size={18} />,
       },
     ],
   },
