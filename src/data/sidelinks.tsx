@@ -34,15 +34,15 @@ import {
   // IconEye,
 } from '@tabler/icons-react'
 
-export interface NavLink {
+export interface SideLink {
   title: string
   label?: string
   href: string
   icon: JSX.Element
-  sub?: NavLink[]
+  sub?: SideLink[]
 }
 
-export const sidelinks: NavLink[] = [
+export const sidelinks: SideLink[] = [
   {
     title: 'Trang tổng quan',
     label: '',

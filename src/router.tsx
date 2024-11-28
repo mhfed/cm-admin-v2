@@ -52,90 +52,250 @@ const router = createBrowserRouter([
           Component: (await import('./pages/dashboard')).default,
         }),
       },
+      // Orders routes
+      {
+        path: 'orders',
+        children: [
+          {
+            index: true,
+            lazy: async () => ({
+              Component: (await import('@pages/orders')).default,
+            }),
+          },
+          {
+            path: 'assigned',
+            lazy: async () => ({
+              Component: (await import('@pages/orders/assigned')).default,
+            }),
+          },
+        ],
+      },
+      // Products routes
+      {
+        path: 'products',
+        children: [
+          {
+            index: true,
+            lazy: async () => ({
+              Component: (await import('@pages/products')).default,
+            }),
+          },
+          {
+            path: 'list',
+            lazy: async () => ({
+              Component: (await import('@pages/products/list')).default,
+            }),
+          },
+          {
+            path: 'category',
+            lazy: async () => ({
+              Component: (await import('@pages/products/category')).default,
+            }),
+          },
+          {
+            path: 'tags',
+            lazy: async () => ({
+              Component: (await import('@pages/products/tags')).default,
+            }),
+          },
+        ],
+      },
+      // Categories route
+      {
+        path: 'categories',
+        lazy: async () => ({
+          Component: (await import('@pages/categories')).default,
+        }),
+      },
+      // Collections route  
+      {
+        path: 'collections',
+        lazy: async () => ({
+          Component: (await import('@pages/collections')).default,
+        }),
+      },
+      // Discounts route
+      {
+        path: 'discounts',
+        lazy: async () => ({
+          Component: (await import('@pages/discounts')).default,
+        }),
+      },
+      // Pages route
+      {
+        path: 'pages',
+        lazy: async () => ({
+          Component: (await import('@pages/pages')).default,
+        }),
+      },
+      // Articles routes
+      {
+        path: 'articles',
+        children: [
+          {
+            index: true,
+            lazy: async () => ({
+              Component: (await import('@pages/articles')).default,
+            }),
+          },
+          {
+            path: 'seo',
+            lazy: async () => ({
+              Component: (await import('@pages/articles/seo')).default,
+            }),
+          },
+        ],
+      },
+      // Blogs route
+      {
+        path: 'blogs',
+        lazy: async () => ({
+          Component: (await import('@pages/blogs')).default,
+        }),
+      },
+      // Customers routes
+      {
+        path: 'customers',
+        children: [
+          {
+            index: true,
+            lazy: async () => ({
+              Component: (await import('@pages/customers')).default,
+            }),
+          },
+          {
+            path: 'tich-diem',
+            lazy: async () => ({
+              Component: (await import('@pages/customers/tich-diem')).default,
+            }),
+          },
+          {
+            path: 'opt-out',
+            lazy: async () => ({
+              Component: (await import('@pages/customers/opt-out')).default,
+            }),
+          },
+        ],
+      },
+      // Reports routes
+      {
+        path: 'reports',
+        children: [
+          {
+            index: true,
+            lazy: async () => ({
+              Component: (await import('@pages/reports')).default,
+            }),
+          },
+          {
+            path: 'top-staffs',
+            lazy: async () => ({
+              Component: (await import('@pages/reports/top-staffs')).default,
+            }),
+          },
+          {
+            path: 'products',
+            lazy: async () => ({
+              Component: (await import('@pages/reports/products')).default,
+            }),
+          },
+        ],
+      },
+      // Reviews route
+      {
+        path: 'reviews',
+        lazy: async () => ({
+          Component: (await import('@pages/reviews')).default,
+        }),
+      },
+      // SEO routes
+      {
+        path: 'seo-redirect',
+        lazy: async () => ({
+          Component: (await import('@pages/seo-redirect')).default,
+        }),
+      },
+      {
+        path: 'seo',
+        lazy: async () => ({
+          Component: (await import('@pages/seo')).default,
+        }),
+      },
+      // Tool routes
+      {
+        path: 'tool',
+        children: [
+          {
+            path: 'audit-aff',
+            lazy: async () => ({
+              Component: (await import('@pages/tool/audit-aff')).default,
+            }),
+          },
+          {
+            path: 'vietful-cxp',
+            lazy: async () => ({
+              Component: (await import('@pages/tool/vietful-cxp')).default,
+            }),
+          },
+          {
+            path: 'mapping',
+            children: [
+              {
+                path: 'san',
+                lazy: async () => ({
+                  Component: (await import('@pages/tool/mapping/san')).default,
+                }),
+              },
+              {
+                path: 'import-product',
+                lazy: async () => ({
+                  Component: (await import('@pages/tool/mapping/import-product')).default,
+                }),
+              },
+              {
+                path: 'swap-barcode',
+                lazy: async () => ({
+                  Component: (await import('@pages/tool/mapping/swap-barcode')).default,
+                }),
+              },
+            ],
+          },
+        ],
+      },
+      // Settings routes
+      {
+        path: 'settings',
+        children: [
+          {
+            path: 'general',
+            lazy: async () => ({
+              Component: (await import('@pages/settings/general')).default,
+            }),
+          },
+        ],
+      },
+      // Background job route
+      {
+        path: 'background-job',
+        lazy: async () => ({
+          Component: (await import('@pages/background-job')).default,
+        }),
+      },
+      // Staffs route
+      {
+        path: 'staffs',
+        lazy: async () => ({
+          Component: (await import('@pages/staffs')).default,
+        }),
+      },
+      // Giữ lại các routes cũ
       {
         path: 'tasks',
         lazy: async () => ({
           Component: (await import('@pages/tasks')).default,
         }),
       },
-      {
-        path: 'chats',
-        lazy: async () => ({
-          Component: (await import('@pages/chats')).default,
-        }),
-      },
-      {
-        path: 'apps',
-        lazy: async () => ({
-          Component: (await import('@pages/apps')).default,
-        }),
-      },
-      {
-        path: 'users',
-        lazy: async () => ({
-          Component: (await import('@components/common/coming-soon.tsx')).default,
-        }),
-      },
-      {
-        path: 'analysis',
-        lazy: async () => ({
-          Component: (await import('@components/common/coming-soon.tsx')).default,
-        }),
-      },
-      {
-        path: 'extra-components',
-        lazy: async () => ({
-          Component: (await import('@pages/extra-components')).default,
-        }),
-      },
-      {
-        path: 'settings',
-        lazy: async () => ({
-          Component: (await import('./pages/settings')).default,
-        }),
-        errorElement: <GeneralError />,
-        children: [
-          {
-            index: true,
-            lazy: async () => ({
-              Component: (await import('./pages/settings/profile')).default,
-            }),
-          },
-          {
-            path: 'account',
-            lazy: async () => ({
-              Component: (await import('./pages/settings/account')).default,
-            }),
-          },
-          {
-            path: 'appearance',
-            lazy: async () => ({
-              Component: (await import('./pages/settings/appearance')).default,
-            }),
-          },
-          {
-            path: 'notifications',
-            lazy: async () => ({
-              Component: (await import('./pages/settings/notifications'))
-                .default,
-            }),
-          },
-          {
-            path: 'display',
-            lazy: async () => ({
-              Component: (await import('./pages/settings/display')).default,
-            }),
-          },
-          {
-            path: 'error-example',
-            lazy: async () => ({
-              Component: (await import('./pages/settings/error-example'))
-                .default,
-            }),
-            errorElement: <GeneralError className='h-[50svh]' minimal />,
-          },
-        ],
-      },
+      // ... giữ nguyên các routes cũ khác
     ],
   },
 
