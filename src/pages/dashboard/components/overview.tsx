@@ -2,52 +2,52 @@ import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
 
 const data = [
   {
-    name: 'Jan',
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: 'T1',
+    total: Math.floor(Math.random() * 500000) + 1000,
   },
   {
-    name: 'Feb',
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: 'T2',
+    total: Math.floor(Math.random() * 500000) + 1000,
   },
   {
-    name: 'Mar',
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: 'T3',
+    total: Math.floor(Math.random() * 500000) + 1000,
   },
   {
-    name: 'Apr',
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: 'T4',
+    total: Math.floor(Math.random() * 500000) + 1000,
   },
   {
-    name: 'May',
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: 'T5',
+    total: Math.floor(Math.random() * 500000) + 1000,
   },
   {
-    name: 'Jun',
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: 'T6',
+    total: Math.floor(Math.random() * 500000) + 1000,
   },
   {
-    name: 'Jul',
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: 'T7',
+    total: Math.floor(Math.random() * 500000) + 1000,
   },
   {
-    name: 'Aug',
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: 'T8',
+    total: Math.floor(Math.random() * 500000) + 1000,
   },
   {
-    name: 'Sep',
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: 'T9',
+    total: Math.floor(Math.random() * 500000) + 1000,
   },
   {
-    name: 'Oct',
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: 'T10',
+    total: Math.floor(Math.random() * 500000) + 1000,
   },
   {
-    name: 'Nov',
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: 'T11',
+    total: Math.floor(Math.random() * 500000) + 1000,
   },
   {
-    name: 'Dec',
-    total: Math.floor(Math.random() * 5000) + 1000,
+    name: 'T12',
+    total: Math.floor(Math.random() * 500000) + 1000,
   },
 ]
 
@@ -67,7 +67,7 @@ export function Overview() {
           fontSize={12}
           tickLine={false}
           axisLine={false}
-          tickFormatter={(value) => `$${value}`}
+          tickFormatter={(value) => `${value.toLocaleString('vi-VN')}đ`}
         />
         <Bar
           dataKey='total'
