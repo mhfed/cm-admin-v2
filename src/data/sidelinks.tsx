@@ -47,14 +47,14 @@ const createPermissionLink = (
   link: SideLink,
   invert: boolean = false
 ): SideLink | null => {
-  return link // Tạm thời cho phép tất cả, sau xóa
-
   const hasPermission = checkPermission(
     Array.isArray(permission) ? permission : [permission],
     permissions,
     invert
   )
-  return hasPermission ? link : null  
+  
+  return hasPermission ? link : link   // TODO: xóa đi dùng cái dưới
+  // return hasPermission ? link : null  
 }
 
 export const getSidelinks = (permissions: string[], userId: string) => {
