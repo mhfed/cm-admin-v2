@@ -36,11 +36,11 @@ const router = createBrowserRouter([
   {
     path: '/',
     lazy: async () => {
-      const AppShell = await import('./components/common/app-shell.tsx')
+      const AppLayout = await import('./components/common/app-layout.tsx')
       return { 
         Component: () => (
           <ProtectedRoute>
-            <AppShell.default />
+            <AppLayout.default />
           </ProtectedRoute>
         )
       }

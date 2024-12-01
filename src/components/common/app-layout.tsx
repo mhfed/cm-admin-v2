@@ -3,7 +3,7 @@ import Sidebar from '@components/layout/sidebar'
 import useIsCollapsed from '@hooks/common/use-is-collapsed'
 import SkipToMain from '@components/common/skip-to-main'
 
-export default function AppShell() {
+export default function AppLayout() {
   const [isCollapsed, setIsCollapsed] = useIsCollapsed()
   return (
     <div className='relative h-full overflow-hidden bg-background'>

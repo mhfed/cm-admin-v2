@@ -12,6 +12,7 @@ import {
   IconStar,
   IconTool,
   IconUser,
+  IconPalette,
 } from '@tabler/icons-react'
 import { checkPermission } from '@utils/permission'
 
@@ -46,13 +47,14 @@ const createPermissionLink = (
   link: SideLink,
   invert: boolean = false
 ): SideLink | null => {
-  // const hasPermission = checkPermission(
-  //   Array.isArray(permission) ? permission : [permission],
-  //   permissions,
-  //   invert
-  // )
-  // return hasPermission ? link : null
-  return link
+  return link // Tạm thời cho phép tất cả, sau xóa
+
+  const hasPermission = checkPermission(
+    Array.isArray(permission) ? permission : [permission],
+    permissions,
+    invert
+  )
+  return hasPermission ? link : null  
 }
 
 export const getSidelinks = (permissions: string[], userId: string) => {
@@ -156,6 +158,32 @@ export const getSidelinks = (permissions: string[], userId: string) => {
       ]),
       true
     ),
+    
+    createSideLink('UI', '', <IconPalette size={18} />, [], [
+      createSideLink('Công việc', '/tasks', <IconCircleDotFilled size={18} />, []),
+      createSideLink('Tin nhắn', '/chats', <IconCircleDotFilled size={18} />, []),
+      createSideLink('Ứng dụng', '/apps', <IconCircleDotFilled size={18} />),
+      createSideLink('Xác thực', '', <IconCircleDotFilled size={18} />, [], [
+        createSideLink('Đăng nhập (email + mật khẩu)', '/sign-in', <IconCircleDotFilled size={18} />),
+        createSideLink('Đăng nhập (Box)', '/sign-in-2', <IconCircleDotFilled size={18} />),
+        createSideLink('Đăng ký', '/sign-up', <IconCircleDotFilled size={18} />),
+        createSideLink('Quên mật khẩu', '/forgot-password', <IconCircleDotFilled size={18} />),
+        createSideLink('Mã OTP', '/otp', <IconCircleDotFilled size={18} />),
+      ]),
+      createSideLink('Người dùng', '/users', <IconCircleDotFilled size={18} />),
+      createSideLink('Yêu cầu', '/requests', <IconCircleDotFilled size={18} />, [], [
+        createSideLink('Xe tải', '/trucks', <IconCircleDotFilled size={18} />, [], [], '9'),
+        createSideLink('Hàng hóa', '/cargos', <IconCircleDotFilled size={18} />),
+      ], '10'),
+      createSideLink('Phân tích', '/analysis', <IconCircleDotFilled size={18} />),
+      createSideLink('Thành phần bổ sung', '/extra-components', <IconCircleDotFilled size={18} />),
+      createSideLink('Trang lỗi', '', <IconCircleDotFilled size={18} />, [], [
+        createSideLink('Không tìm thấy', '/404', <IconCircleDotFilled size={18} />),
+        createSideLink('Lỗi máy chủ', '/500', <IconCircleDotFilled size={18} />),
+        createSideLink('Đang bảo trì', '/503', <IconCircleDotFilled size={18} />),
+        createSideLink('Không được phép', '/401', <IconCircleDotFilled size={18} />),
+      ]),
+    ]),
   ]
 
   return links.filter((link): link is SideLink => link !== null)
