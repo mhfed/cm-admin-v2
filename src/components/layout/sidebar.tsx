@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { IconChevronsLeft, IconMenu2, IconX } from '@tabler/icons-react'
-import { Layout } from '../custom/layout'
-import { Button } from '../custom/button'
-import Nav from './nav'
+import { Layout } from '@components/custom/layout'
+import { Button } from '@components/custom/button'
 import { cn } from '@utils/cn'
-import { getSidelinks } from '@data/sidelinks'
+import { getSidelinks } from '@components/layout/sidelinks'
 import { useAuth } from '@/stores/auth'
 import { PERMISSIONS } from '@/constants/permissions'
+import Nav from '@components/layout/nav'
 
 const Logo = ({ className }: { className?: string }) => (
   <svg

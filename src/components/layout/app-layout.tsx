@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import Sidebar from '@components/layout/sidebar'
 import useIsCollapsed from '@hooks/common/use-is-collapsed'
-import SkipToMain from '@components/common/skip-to-main'
+import SkipToMain from '@components/layout/skip-to-main'
 
 export default function AppLayout() {
   const [isCollapsed, setIsCollapsed] = useIsCollapsed()

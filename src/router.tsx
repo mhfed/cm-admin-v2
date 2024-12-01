@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom'
-import GeneralError from './pages/errors/general-error'
-import NotFoundError from './pages/errors/not-found-error'
-import MaintenanceError from './pages/errors/maintenance-error'
-import UnauthorisedError from './pages/errors/unauthorised-error.tsx'
-import ProtectedRoute from './components/guard/protected-route.tsx'
+import GeneralError from '@pages/errors/general-error'
+import NotFoundError from '@pages/errors/not-found-error'
+import MaintenanceError from '@pages/errors/maintenance-error'
+import UnauthorisedError from '@pages/errors/unauthorised-error'
+import ProtectedRoute from '@components/guard/protected-route'
 
 const router = createBrowserRouter([
   // Auth routes
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     lazy: async () => {
-      const AppLayout = await import('./components/common/app-layout.tsx')
+      const AppLayout = await import('./components/layout/app-layout.tsx')
       return { 
         Component: () => (
           <ProtectedRoute>
