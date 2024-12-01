@@ -12,20 +12,20 @@ export default function ProtectedRoute({
   children, 
   requiredPermissions = [] 
 }: ProtectedRouteProps) {
-  const { isAuthenticated, role } = useAuth()
+  // const { isAuthenticated, role } = useAuth()
 
-  if (!isAuthenticated) {
-    return <Navigate to="/sign-in" replace />
-  }
+  // if (!isAuthenticated) {
+  //   return <Navigate to="/sign-in" replace />
+  // }
 
-  if (requiredPermissions.length > 0 && role) {
-    const permissions = PERMISSIONS[role]
-    const hasPermission = checkPermission(requiredPermissions, permissions)
+  // if (requiredPermissions.length > 0 && role) {
+  //   const permissions = PERMISSIONS[role]
+  //   const hasPermission = checkPermission(requiredPermissions, permissions)
     
-    if (!hasPermission) {
-      return <Navigate to="/401" replace />
-    }
-  }
+  //   if (!hasPermission) {
+  //     return <Navigate to="/401" replace />
+  //   }
+  // }
 
   return <>{children}</>
 } 
