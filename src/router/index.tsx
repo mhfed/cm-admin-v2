@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom'
 import { RootLayout } from '@components/layout/root'
 import { AuthLayout } from '@components/auth'
-import { ProtectedRoute } from '@components/auth/protected-route'
+import { ProtectedRoute } from '@components/guard/protected-route'
 import { routes } from './routes'
 
 // Public routes

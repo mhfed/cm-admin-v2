@@ -17,24 +17,24 @@ import { Button } from '@components/custom/button'
 import { PasswordInput } from '@components/custom/password-input'
 import { cn } from '@utils/cn'
 
-interface UserAuthFormProps extends HTMLAttributes<HTMLDivElement> {}
+interface LoginFormProps extends HTMLAttributes<HTMLDivElement> {}
 
 const formSchema = z.object({
   email: z
     .string()
-    .min(1, { message: 'Please enter your email' })
-    .email({ message: 'Invalid email address' }),
+    .min(1, { message: 'Vui lòng nhập email' })
+    .email({ message: 'Email không hợp lệ' }),
   password: z
     .string()
     .min(1, {
-      message: 'Please enter your password',
+      message: 'Vui lòng nhập mật khẩu',
     })
     .min(7, {
-      message: 'Password must be at least 7 characters long',
+      message: 'Mật khẩu phải có ít nhất 7 ký tự',
     }),
 })
 
-export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
+export function LoginForm({ className, ...props }: LoginFormProps) {
   const [isLoading, setIsLoading] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -78,12 +78,12 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               render={({ field }) => (
                 <FormItem className='space-y-1'>
                   <div className='flex items-center justify-between'>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>Mật khẩu</FormLabel>
                     <Link
                       to='/forgot-password'
                       className='text-sm font-medium text-muted-foreground hover:opacity-75'
                     >
-                      Forgot password?
+                      Quên mật khẩu?
                     </Link>
                   </div>
                   <FormControl>
@@ -94,7 +94,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               )}
             />
             <Button className='mt-2' loading={isLoading}>
-              Login
+              Đăng nhập
             </Button>
 
             <div className='relative my-2'>
@@ -102,8 +102,8 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                 <span className='w-full border-t' />
               </div>
               <div className='relative flex justify-center text-xs uppercase'>
-                <span className='bg-background px-2 text-muted-foreground'>
-                  Or continue with
+                <span className='px-2 bg-background text-muted-foreground'>
+                  Hoặc tiếp tục với
                 </span>
               </div>
             </div>
@@ -114,7 +114,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                 className='w-full'
                 type='button'
                 loading={isLoading}
-                leftSection={<IconBrandGithub className='h-4 w-4' />}
+                leftSection={<IconBrandGithub className='w-4 h-4' />}
               >
                 GitHub
               </Button>
@@ -123,7 +123,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                 className='w-full'
                 type='button'
                 loading={isLoading}
-                leftSection={<IconBrandFacebook className='h-4 w-4' />}
+                leftSection={<IconBrandFacebook className='w-4 h-4' />}
               >
                 Facebook
               </Button>

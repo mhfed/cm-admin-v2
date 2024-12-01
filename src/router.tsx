@@ -3,28 +3,22 @@ import GeneralError from './pages/errors/general-error'
 import NotFoundError from './pages/errors/not-found-error'
 import MaintenanceError from './pages/errors/maintenance-error'
 import UnauthorisedError from './pages/errors/unauthorised-error.tsx'
-import ProtectedRoute from './components/auth/protected-route'
+import ProtectedRoute from './components/guard/protected-route.tsx'
 
 const router = createBrowserRouter([
   // Auth routes
-  {
-    path: '/sign-in',
+  ...['/login', '/sign-in'].map(path => ({
+    path,
     lazy: async () => ({
-      Component: (await import('./pages/auth/sign-in')).default,
-    }),
-  },
-  {
-    path: '/sign-in-2',
+      Component: (await import('./pages/auth/login/index.tsx')).default,
+      }),
+  })),
+  ...['/register', '/sign-up'].map(path => ({
+    path,
     lazy: async () => ({
-      Component: (await import('./pages/auth/sign-in-2')).default,
+      Component: (await import('./pages/auth/register/index.tsx')).default,
     }),
-  },
-  {
-    path: '/sign-up',
-    lazy: async () => ({
-      Component: (await import('./pages/auth/sign-up')).default,
-    }),
-  },
+  })),
   {
     path: '/forgot-password',
     lazy: async () => ({
