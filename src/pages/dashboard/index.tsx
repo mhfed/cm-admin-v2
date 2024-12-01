@@ -13,7 +13,7 @@ import {
   CardTitle,
 } from '@components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@components/ui/tabs'
-import { DailyRevenueChart } from '@pages/dashboard/components/daily-revenue-chart'
+// import { DailyRevenueChart } from '@pages/dashboard/components/daily-revenue-chart'
 import { CalendarDateRangePicker } from '@pages/dashboard/components/date-range-picker'
 import { Overview } from '@pages/dashboard/components/overview'
 import { OverviewCard } from '@pages/dashboard/components/overview-card'
@@ -63,7 +63,7 @@ export default function Dashboard() {
             <div className='grid grid-cols-1 gap-4 lg:grid-cols-3'>
               <Card className='col-span-1 lg:col-span-2'>
                 <CardHeader>
-                  <CardTitle>Tổng quan</CardTitle>
+                  <CardTitle className='uppercase'>Doanh thu theo ngày</CardTitle>
                 </CardHeader>
                 <CardContent className='pl-2'>
                   
@@ -73,7 +73,7 @@ export default function Dashboard() {
                   
                 </CardContent>
               </Card>
-              <Card className='col-span-1 lg:col-span-1'>
+              <Card className='col-span-1 lg:col-span-1 h-fit'>
                 <CardHeader>
                   <CardTitle>Đơn hàng mới</CardTitle>
                   <CardDescription>
