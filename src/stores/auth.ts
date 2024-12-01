@@ -1,90 +1,96 @@
+import { Role } from '@constants/permissions'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import httpRequest from '@services/api'
 
 interface User {
   id: string
+  name: string
   email: string
-  role: string
-  permissions: string[]
-  name?: string
-  avatar?: string
+  role: Role
+}
+
+interface Credentials {
+  email: string
+  password: string
 }
 
 interface AuthState {
   user: User | null
+  role: Role | null
+  isAuthenticated: boolean
   token: string | null
-  isLoading: boolean
-  error: string | null
-
+  
   // Actions
-  login: (email: string, password: string) => Promise<void>
+  login: (credentials: Credentials) => Promise<void>
   logout: () => void
-  checkAuth: () => Promise<void>
-  checkPermission: (needles: string[], skipAdmin?: boolean) => boolean
+  updateUser: (user: Partial<User>) => void
 }
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       user: null,
+      role: null,
+      isAuthenticated: false,
       token: null,
-      isLoading: false,
-      error: null,
 
-      login: async (email: string, password: string) => {
+      login: async (credentials) => {
         try {
-          set({ isLoading: true, error: null })
-          const { data } = await httpRequest.post('/auth/login', { email, password })
+          // Gọi API login
+          const response = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(credentials),
+          })
+
+          if (!response.ok) {
+            throw new Error('Login failed')
+          }
+
+          const data = await response.json()
           
-          set({ 
+          set({
             user: data.user,
+            role: data.user.role,
+            isAuthenticated: true,
             token: data.token,
-            isLoading: false 
           })
         } catch (error) {
-          set({ 
-            error: 'Login failed. Please check your credentials.',
-            isLoading: false 
-          })
+          console.error('Login error:', error)
           throw error
         }
       },
 
       logout: () => {
-        set({ user: null, token: null })
+        set({
+          user: null,
+          role: null,
+          isAuthenticated: false,
+          token: null,
+        })
       },
 
-      checkAuth: async () => {
-        try {
-          set({ isLoading: true })
-          const { data } = await httpRequest.get('/auth/me')
-          set({ user: data, isLoading: false })
-        } catch (error) {
-          set({ 
-            user: null, 
-            token: null,
-            isLoading: false 
-          })
-          throw error
-        }
+      updateUser: (userData) => {
+        set((state) => ({
+          user: state.user ? { ...state.user, ...userData } : null,
+        }))
       },
-
-      // Migrate từ utils.js checkPermission
-      checkPermission: (needles: string[], skipAdmin = false) => {
-        const { user } = get()
-        if (!user?.permissions) return false
-        
-        if (user.permissions.includes('all') && !skipAdmin) return true
-        
-        return needles.every(permission => 
-          user.permissions.includes(permission)
-        )
-      }
     }),
     {
-      name: 'auth-storage', // unique name for localStorage
-      partialize: (state) => ({ token: state.token }) // chỉ lưu token vào localStorage
+      name: 'auth-storage', // tên unique cho localStorage
+      partialize: (state) => ({
+        user: state.user,
+        token: state.token,
+        isAuthenticated: state.isAuthenticated,
+      }),
     }
   )
-) 
+)
+
+// Custom hook để sử dụng auth store
+export function useAuth() {
+  const { user, role, isAuthenticated, login, logout, updateUser } = useAuthStore()
+  return { user, role, isAuthenticated, login, logout, updateUser }
+} 

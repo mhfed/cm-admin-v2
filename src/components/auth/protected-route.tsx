@@ -1,25 +1,31 @@
-import { Navigate, Outlet, useLocation, useMatches } from 'react-router-dom'
-import { useAuthStore } from '@stores/auth'
-import type { ProtectedRouteConfig } from '@/router/routes'
+import { Navigate } from 'react-router-dom'
+import { useAuth } from '@/stores/auth'
+import { checkPermission } from '@/lib/utils/permission'
+import { Permission, PERMISSIONS } from '@constants/permissions'
 
-export function ProtectedRoute() {
-  const { user, token, checkPermission } = useAuthStore()
-  const location = useLocation()
-  const matches = useMatches() as { route: ProtectedRouteConfig }[]
+interface ProtectedRouteProps {
+  children: React.ReactNode
+  requiredPermissions?: Permission[]
+}
 
-  // Check if not logged in
-  if (!token || !user) {
-    return <Navigate to="/login" state={{ from: location }} replace />
+export default function ProtectedRoute({ 
+  children, 
+  requiredPermissions = [] 
+}: ProtectedRouteProps) {
+  const { isAuthenticated, role } = useAuth()
+
+  if (!isAuthenticated) {
+    return <Navigate to="/sign-in" replace />
   }
 
-  // Get required permissions from current route
-  const currentRoute = matches[matches.length - 1]?.route
-  const requiredPermissions = currentRoute?.permissions || []
-
-  // Check permissions
-  if (requiredPermissions.length > 0 && !checkPermission(requiredPermissions)) {
-    return <Navigate to="/unauthorized" replace />
+  if (requiredPermissions.length > 0 && role) {
+    const permissions = PERMISSIONS[role]
+    const hasPermission = checkPermission(requiredPermissions, permissions)
+    
+    if (!hasPermission) {
+      return <Navigate to="/401" replace />
+    }
   }
 
-  return <Outlet />
+  return <>{children}</>
 } 

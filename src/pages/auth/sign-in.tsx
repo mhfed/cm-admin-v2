@@ -1,7 +1,21 @@
 import { UserAuthForm } from './components/user-auth-form'
 import ViteLogo from '@/assets/vite.svg'
+import { useAuthStore } from '@/stores/auth'
 
 export default function SignIn() {
+  const setUserRole = useAuthStore(state => state.setUserRole)
+
+  const handleLogin = async (data: LoginFormData) => {
+    try {
+      const response = await loginApi(data)
+      // Giả sử response trả về role của user
+      setUserRole(response.role) 
+      // Xử lý redirect sau khi login thành công
+    } catch (error) {
+      // Xử lý error
+    }
+  }
+
   return (
     <>
       <div className='container relative grid h-svh flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0'>

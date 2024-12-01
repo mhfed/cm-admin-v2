@@ -4,7 +4,9 @@ import { Layout } from '../custom/layout'
 import { Button } from '../custom/button'
 import Nav from './nav'
 import { cn } from '@utils/cn'
-import { sidelinks } from '@data/sidelinks'
+import { getSidelinks } from '@data/sidelinks'
+import { useAuth } from '@/stores/auth'
+import { PERMISSIONS } from '@/constants/permissions'
 
 const Logo = ({ className }: { className?: string }) => (
   <svg
@@ -50,6 +52,9 @@ export default function Sidebar({
   setIsCollapsed,
 }: SidebarProps) {
   const [navOpened, setNavOpened] = useState(false)
+  const { role, user } = useAuth()
+  const permissions = role ? PERMISSIONS[role] : []
+  const sidelinks = getSidelinks([...permissions], user?.id || '')
 
   /* Làm cho body không thể cuộn khi thanh điều hướng được mở */
   useEffect(() => {

@@ -23,6 +23,7 @@ import {
   IconUserShield,
   IconUsers
 } from '@tabler/icons-react'
+import { checkPermission } from '@utils/permission'
 
 export interface SideLink {
   title: string
@@ -30,383 +31,109 @@ export interface SideLink {
   href: string
   icon: JSX.Element
   sub?: SideLink[]
+  permissions?: string[]
 }
 
-export const sidelinks: SideLink[] = [
-  {
-    title: 'Trang tổng quan',
-    label: '',
-    href: '/',
-    icon: <IconHome size={18} />,
-  },
-  {
-    title: 'Đơn đặt hàng',
-    label: '',
-    href: '/orders',
-    icon: <IconShoppingCart size={18} />,
-    sub: [
-      {
-        title: 'Tất cả đơn hàng',
-        href: '/orders',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Đơn đặt hàng được phân công',
-        href: '/orders/assigned',
-        icon: <IconCircleDotFilled size={18} />,
-      }
-    ]
-  },
-  {
-    title: 'Sản phẩm',
-    label: '',
-    href: '/products',
-    icon: <IconShoppingBag size={18} />,
-    sub: [
-      {
-        title: 'Tất cả sản phẩm',
-        href: '/products',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Danh mục',
-        href: '/categories',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Nhóm sản phẩm',
-        href: '/collections',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Phân loại sản phẩm',
-        href: '/products/category',
-        icon: <IconCircleDotFilled size={18} />,
-        sub: [
-          {
-            title: 'Product Category',
-            href: '/products/category',
-            icon: <IconDots size={18} />,
-          },
-          {
-            title: 'Products',
-            href: '/products/list',
-            icon: <IconDots size={18} />,
-          },
-          {
-            title: 'Product Tags',
-            href: '/products/tags',
-            icon: <IconDots size={18} />,
-          }
-        ]
-      }
-    ]
-  },
-  {
-    title: 'Mã giảm giá',
-    label: '',
-    href: '/discounts',
-    icon: <IconGift size={18} />,
-  },
-  {
-    title: 'Trang',
-    label: '',
-    href: '/pages',
-    icon: <IconFileText size={18} />,
-  },
-  {
-    title: 'Bài viết',
-    label: '',
-    href: '/articles',
-    icon: <IconFileText size={18} />,
-    sub: [
-      {
-        title: 'Tất cả bài viết',
-        href: '/articles',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Danh mục bài viết',
-        href: '/blogs',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Quản lý SEO',
-        href: '/articles/seo',
-        icon: <IconCircleDotFilled size={18} />,
-      }
-    ]
-  },
-  {
-    title: 'Khách hàng',
-    label: '',
-    href: '/customers',
-    icon: <IconUser size={18} />,
-    sub: [
-      {
-        title: 'Tất cả khách hàng',
-        href: '/customers',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Tích điểm Coolclub',
-        href: '/customers/tich-diem',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Loại bỏ thông báo',
-        href: '/customers/opt-out',
-        icon: <IconCircleDotFilled size={18} />,
-      }
-    ]
-  },
-  {
-    title: 'Báo cáo',
-    label: '',
-    href: '/reports',
-    icon: <IconChartBar size={18} />,
-    sub: [
-      {
-        title: 'Báo cáo tổng quan',
-        href: '/reports',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Top nhân viên',
-        href: '/reports/top-staffs',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Sản phẩm theo đơn',
-        href: '/reports/products',
-        icon: <IconCircleDotFilled size={18} />,
-      }
-    ]
-  },
-  {
-    title: 'Đánh giá',
-    label: '',
-    href: '/reviews',
-    icon: <IconStar size={18} />,
-  },
-  {
-    title: 'Quản lý link SEO',
-    label: '',
-    href: '/seo-redirect',
-    icon: <IconLink size={18} />,
-    sub: [
-      {
-        title: 'SEO Redirects',
-        href: '/seo-redirect',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Quản lý SEO',
-        href: '/seo',
-        icon: <IconCircleDotFilled size={18} />,
-      }
-    ]
-  },
-  {
-    title: 'Công cụ',
-    label: '',
-    href: '/tool',
-    icon: <IconTool size={18} />,
-    sub: [
-      {
-        title: 'Đối soát Aff',
-        href: '/tool/audit-aff',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'VietFul CXP',
-        href: '/tool/vietful-cxp',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Mapping',
-        href: '/tool/mapping',
-        icon: <IconCircleDotFilled size={18} />,
-        sub: [
-          {
-            title: 'Mapping Sàn',
-            href: '/tool/mapping/san',
-            icon: <IconDots size={18} />,
-          },
-          {
-            title: 'Import file sản phẩm',
-            href: '/tool/mapping/import-product',
-            icon: <IconDots size={18} />,
-          },
-          {
-            title: 'Swap Barcode',
-            href: '/tool/mapping/swap-barcode',
-            icon: <IconDots size={18} />,
-          }
-        ]
-      }
-    ]
-  },
-  {
-    title: 'Quản lý',
-    label: '',
-    href: '/settings',
-    icon: <IconSettings size={18} />,
-    sub: [
-      {
-        title: 'Tác vụ ngầm',
-        href: '/background-job',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Cài đặt chung',
-        href: '/settings/general',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Nhân viên',
-        href: '/staffs',
-        icon: <IconCircleDotFilled size={18} />,
-      }
-    ]
-  },
+const createSideLink = (
+  title: string,
+  href: string,
+  icon: JSX.Element,
+  permissions?: string[],
+  sub?: SideLink[],
+  label?: string,
+): SideLink => ({
+  title,
+  href,
+  icon,
+  permissions,
+  sub,
+  label,
+})
 
-  {
-    title: 'Tổng quan',
-    label: '',
-    href: '/',
-    icon: <IconLayoutDashboard size={18} />,
-  },
-  {
-    title: 'Công việc',
-    label: '3',
-    href: '/tasks',
-    icon: <IconChecklist size={18} />,
-  },
-  {
-    title: 'Tin nhắn',
-    label: '9',
-    href: '/chats',
-    icon: <IconMessages size={18} />,
-  },
-  {
-    title: 'Ứng dụng',
-    label: '',
-    href: '/apps',
-    icon: <IconApps size={18} />,
-  },
-  {
-    title: 'Xác thực',
-    label: '',
-    href: '',
-    icon: <IconUserShield size={18} />,
-    sub: [
-      {
-        title: 'Đăng nhập (email + mật khẩu)',
-        label: '',
-        href: '/sign-in',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Đăng nhập (Box)',
-        label: '',
-        href: '/sign-in-2',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Đăng ký',
-        label: '',
-        href: '/sign-up',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Quên mật khẩu',
-        label: '',
-        href: '/forgot-password',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Mã OTP',
-        label: '',
-        href: '/otp',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-    ],
-  },
-  {
-    title: 'Người dùng',
-    label: '',
-    href: '/users',
-    icon: <IconUsers size={18} />,
-  },
-  {
-    title: 'Yêu cầu',
-    label: '10',
-    href: '/requests',
-    icon: <IconRouteAltLeft size={18} />,
-    sub: [
-      {
-        title: 'Xe tải',
-        label: '9',
-        href: '/trucks',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Hàng hóa',
-        label: '',
-        href: '/cargos',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-    ],
-  },
-  {
-    title: 'Phân tích',
-    label: '',
-    href: '/analysis',
-    icon: <IconChartHistogram size={18} />,
-  },
-  {
-    title: 'Thành phần bổ sung',
-    label: '',
-    href: '/extra-components',
-    icon: <IconComponents size={18} />,
-  },
-  {
-    title: 'Trang lỗi',
-    label: '',
-    href: '',
-    icon: <IconExclamationCircle size={18} />,
-    sub: [
-      {
-        title: 'Không tìm thấy',
-        label: '',
-        href: '/404',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Lỗi máy chủ',
-        label: '',
-        href: '/500',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Đang bảo trì',
-        label: '',
-        href: '/503',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-      {
-        title: 'Không được phép',
-        label: '',
-        href: '/401',
-        icon: <IconCircleDotFilled size={18} />,
-      },
-    ],
-  },
-  {
-    title: 'Cài đặt',
-    label: '',
-    href: '/settings',
-    icon: <IconSettings size={18} />,
-  },
-]
+export const getSidelinks = (permissions: string[], userId: string) => {
+  const links: SideLink[] = [
+    createSideLink('Trang tổng quan', '/', <IconHome size={18} />, ['view_dashboard']),
+    
+    checkPermission(['view_order'], permissions) && 
+    createSideLink('Đơn đặt hàng', '/orders', <IconShoppingCart size={18} />, ['view_order'], [
+      createSideLink('Tất cả đơn hàng', '/orders', <IconCircleDotFilled size={18} />),
+      createSideLink(
+        'Đơn đặt hàng được phân công', 
+        `/orders/assigned?staff_id_shift=${userId}`,
+        <IconCircleDotFilled size={18} />
+      ),
+    ]),
+
+    checkPermission(['view_product'], permissions) &&
+    createSideLink('Sản phẩm', '/products', <IconShoppingBag size={18} />, ['view_product'], [
+      createSideLink('Tất cả sản phẩm', '/products', <IconCircleDotFilled size={18} />),
+      createSideLink('Danh mục', '/categories', <IconCircleDotFilled size={18} />),
+      createSideLink('Nhóm sản phẩm', '/collections', <IconCircleDotFilled size={18} />),
+      createSideLink('Phân loại sản phẩm', '/products/category', <IconCircleDotFilled size={18} />, [], [
+        createSideLink('Product Category', '/products/category', <IconDots size={18} />),
+        createSideLink('Products', '/products/list', <IconDots size={18} />),
+        createSideLink('Product Tags', '/products/tags', <IconDots size={18} />),
+      ]),
+    ]),
+
+    checkPermission(['view_discount'], permissions) &&
+    createSideLink('Mã giảm giá', '/discounts', <IconGift size={18} />, ['view_discount']),
+
+    checkPermission(['view_page'], permissions) &&
+    createSideLink('Trang', '/pages', <IconFileText size={18} />, ['view_page']),
+
+    checkPermission(['view_article'], permissions) &&
+    createSideLink('Bài viết', '/articles', <IconFileText size={18} />, ['view_article'], [
+      createSideLink('Tất cả bài viết', '/articles', <IconCircleDotFilled size={18} />),
+      checkPermission(['view_cate_articles'], permissions) &&
+      createSideLink('Danh mục bài viết', '/blogs', <IconCircleDotFilled size={18} />, ['view_cate_articles']),
+      checkPermission(['view_cate_articles'], permissions) &&
+      createSideLink('Quản lý SEO', '/articles/seo', <IconCircleDotFilled size={18} />, ['view_cate_articles']),
+    ]),
+
+    checkPermission(['view_customer'], permissions) &&
+    createSideLink('Khách hàng', '/customers', <IconUser size={18} />, ['view_customer'], [
+      createSideLink('Tất cả khách hàng', '/customers', <IconCircleDotFilled size={18} />),
+      createSideLink('Tích điểm Coolclub', '/customers/tich-diem', <IconCircleDotFilled size={18} />),
+      createSideLink('Loại bỏ thông báo', '/customers/opt-out', <IconCircleDotFilled size={18} />),
+    ]),
+
+    checkPermission(['view_report'], permissions) &&
+    createSideLink('Báo cáo', '/reports', <IconChartBar size={18} />, ['view_report'], [
+      createSideLink('Báo cáo tổng quan', '/reports', <IconCircleDotFilled size={18} />),
+      createSideLink('Top nhân viên', '/reports/top-staffs', <IconCircleDotFilled size={18} />),
+      createSideLink('Sản phẩm theo đơn', '/reports/products', <IconCircleDotFilled size={18} />),
+    ]),
+
+    checkPermission(['view_reviews'], permissions) &&
+    createSideLink('Đánh giá', '/reviews', <IconStar size={18} />, ['view_reviews']),
+
+    checkPermission(['view_seo_link'], permissions) &&
+    createSideLink('Quản lý link SEO', '/seo-redirect', <IconLink size={18} />, ['view_seo_link'], [
+      createSideLink('SEO Redirects', '/seo-redirect', <IconCircleDotFilled size={18} />),
+      createSideLink('Quản lý SEO', '/seo', <IconCircleDotFilled size={18} />),
+    ]),
+
+    checkPermission(['view_tools'], permissions) &&
+    createSideLink('Công cụ', '/tool', <IconTool size={18} />, ['view_tools'], [
+      createSideLink('Đối soát Aff', '/tool/audit-aff', <IconCircleDotFilled size={18} />),
+      createSideLink('VietFul CXP', '/tool/vietful-cxp', <IconCircleDotFilled size={18} />),
+      createSideLink('Mapping', '/tool/mapping', <IconCircleDotFilled size={18} />, [], [
+        createSideLink('Mapping Sàn', '/tool/mapping/san', <IconDots size={18} />),
+        createSideLink('Import file sản phẩm', '/tool/mapping/import-product', <IconDots size={18} />),
+        createSideLink('Swap Barcode', '/tool/mapping/swap-barcode', <IconDots size={18} />),
+      ]),
+    ]),
+
+    !checkPermission(['content_member_article'], permissions, true) &&
+    createSideLink('Quản lý', '/settings', <IconSettings size={18} />, [], [
+      checkPermission(['manage'], permissions) &&
+      createSideLink('Tác vụ ngầm', '/background-job', <IconCircleDotFilled size={18} />, ['manage']),
+      createSideLink('Cài đặt chung', '/settings/general', <IconCircleDotFilled size={18} />),
+      checkPermission(['manage'], permissions) &&
+      createSideLink('Nhân viên', '/staffs', <IconCircleDotFilled size={18} />, ['manage']),
+    ]),
+  ].filter(Boolean) as SideLink[]
+
+  return links
+}

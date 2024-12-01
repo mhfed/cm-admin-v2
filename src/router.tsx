@@ -3,6 +3,7 @@ import GeneralError from './pages/errors/general-error'
 import NotFoundError from './pages/errors/not-found-error'
 import MaintenanceError from './pages/errors/maintenance-error'
 import UnauthorisedError from './pages/errors/unauthorised-error.tsx'
+import ProtectedRoute from './components/auth/protected-route'
 
 const router = createBrowserRouter([
   // Auth routes
@@ -42,15 +43,29 @@ const router = createBrowserRouter([
     path: '/',
     lazy: async () => {
       const AppShell = await import('./components/common/app-shell.tsx')
-      return { Component: AppShell.default }
+      return { 
+        Component: () => (
+          <ProtectedRoute>
+            <AppShell.default />
+          </ProtectedRoute>
+        )
+      }
     },
     errorElement: <GeneralError />,
     children: [
+      // Dashboard
       {
         index: true,
-        lazy: async () => ({
-          Component: (await import('./pages/dashboard')).default,
-        }),
+        lazy: async () => {
+          const Component = (await import('./pages/dashboard')).default
+          return {
+            Component: () => (
+              <ProtectedRoute requiredPermissions={['view_dashboard']}>
+                <Component />
+              </ProtectedRoute>
+            )
+          }
+        },
       },
       // Orders routes
       {
@@ -58,15 +73,29 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            lazy: async () => ({
-              Component: (await import('@pages/orders')).default,
-            }),
+            lazy: async () => {
+              const Component = (await import('@pages/orders')).default
+              return {
+                Component: () => (
+                  <ProtectedRoute requiredPermissions={['view_order']}>
+                    <Component />
+                  </ProtectedRoute>
+                )
+              }
+            },
           },
           {
             path: 'assigned',
-            lazy: async () => ({
-              Component: (await import('@pages/orders/assigned')).default,
-            }),
+            lazy: async () => {
+              const Component = (await import('@pages/orders/assigned')).default
+              return {
+                Component: () => (
+                  <ProtectedRoute requiredPermissions={['view_order', 'edit_order']}>
+                    <Component />
+                  </ProtectedRoute>
+                )
+              }
+            },
           },
         ],
       },
